@@ -13,10 +13,11 @@ mongoose.connection.on('disconnected', function () {
   console.log('Mongoose disconnected');
 });
 gracefulShutdown = function (msg, callback) {
-  mongoose.connection.close(function () {
+  mongoose.connection.close(true)
+  {
     console.log('Mongoose disconnected through ' + msg);
     callback();
-  });
+  };
 };
 // For nodemon restarts
 process.once('SIGUSR2', function () {
