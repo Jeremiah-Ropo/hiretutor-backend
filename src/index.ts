@@ -14,7 +14,7 @@ import './utils/connection';
 import './utils/response/customSuccess';
 import { errorHandler } from './middleware/errorHandler';
 import routes from './routes';
-import {PORT} from '../src/config/index';
+import {PORT} from './config';
 import { CustomError } from './utils/response/custom-error/CustomError';
 
 export const app = express();
