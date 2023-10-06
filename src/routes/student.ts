@@ -14,6 +14,8 @@ router.post('/payment-access', checkUserJwt, userController.pay);
 
 router.post('/pay-tutor', checkUserJwt, userController.payTutor);
 
+router.get('/courses', checkUserJwt, userController.getAllCourses);
+
 router.patch('/update', checkUserJwt, userController.update)
 
 router.delete('/delete', userController.delete)
