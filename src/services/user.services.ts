@@ -67,21 +67,6 @@ class UserService {
         }
     }
 
-    async getAllCourses(id: any, next: NextFunction) { 
-        try {
-            let user = await this.studentModel.findById(id);
-            if (!user) {
-                return next(new CustomError(400, "General", "User not allowed"))
-            }   
-
-            let courses = await this.course.find({});
-            return courses;
-
-        } catch (error) {
-            return next(new CustomError(400, "Raw", "Can't get courses", null, error))
-        }
-    };
-    
     async update(id: any, payload: any, next: NextFunction) {
         try {
             let user = await this.studentModel.findById(id);

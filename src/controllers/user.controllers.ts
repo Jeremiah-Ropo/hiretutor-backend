@@ -42,17 +42,6 @@ class UserController {
         };
     };
 
-    getAllCourses = async (req: Request, res: Response, next: NextFunction) => { 
-        try{
-            let data = await this.userService.getAllCourses(req.jwtPayload.id, next);
-            if(data != null){
-                res.customSuccess(200, 'Fetched Successfully', data);
-            };
-        }catch{
-            next()
-        };
-    }
-
     findOneTutor = async(req:Request, res:Response, next:NextFunction) => {
         try{
             let data = await this.userService.findOneTutor(req.jwtPayload.id, next);
