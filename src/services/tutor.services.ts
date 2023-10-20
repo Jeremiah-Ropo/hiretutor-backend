@@ -71,6 +71,7 @@ class TutorService {
                 courseExit.tutor = tutor._id;
                 courseExit.courseTitle = payload.courseTitle;
                 courseExit.price = payload.price;
+                courseExit.description = payload.description;
                 courseExit.courseCode = payload.courseCode;
                 await courseExit.save();
                 return tutor;
@@ -79,6 +80,7 @@ class TutorService {
                 tutor: tutor._id,
                 courseTitle: payload.courseTitle,
                 price: payload.price,
+                description: payload.description,
                 courseCode: payload.courseCode
             });
             tutor.courses.push(course);

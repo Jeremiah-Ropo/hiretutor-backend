@@ -38,7 +38,9 @@ class CourseService {
       }
       let courses = await this.course.find({ $text: { $search: query } });
       return courses;
-    } catch (error) {}
+    } catch (error) {
+      return next(new CustomError(400, 'Raw', "Can't get courses", null, error));
+    }
   }
 
   async getCourseById(id: any, courseId: any, type: string, next: NextFunction) {

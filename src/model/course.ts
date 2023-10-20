@@ -21,6 +21,9 @@ class Course {
   @prop({ nullable: true })
   price: string;
 
+  @prop({ nullable: true })
+  description: string;
+
   @prop({ ref: "Tutor", nullable: true })
   tutor: Ref<Tutor>;
 
