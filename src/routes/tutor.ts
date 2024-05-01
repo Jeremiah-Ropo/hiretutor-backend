@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { checkUserJwt } from '../middleware/checkJwt';
+import { checkTutorJwt } from '../middleware/checkJwt';
 import {Container} from 'typedi';
 
 import TutorController from '../controllers/tutor.controllers';
@@ -7,16 +7,16 @@ import TutorController from '../controllers/tutor.controllers';
 const router = Router();
 const tutorController = Container.get(TutorController);
 
-router.post('/create-course',checkUserJwt, tutorController.registerCourse)
+router.post('/create-course',checkTutorJwt, tutorController.registerCourse)
 
-router.get('/tutor-courses',checkUserJwt, tutorController.coursesByTutor);
+router.get('/tutor/courses',checkTutorJwt, tutorController.coursesByTutor);
 
-router.get('/tutor', checkUserJwt, tutorController.findOneTutor);
+router.get('/tutor', checkTutorJwt, tutorController.findOneTutor);
 
-router.patch('/update', checkUserJwt, tutorController.update)
+router.patch('/update', checkTutorJwt, tutorController.update)
 
 // router.delete('/delete', tutorController.delete)
 
-router.post('/logout', checkUserJwt, tutorController.logOut)
+router.post('/logout', checkTutorJwt, tutorController.logOut)
 
 export default router;
