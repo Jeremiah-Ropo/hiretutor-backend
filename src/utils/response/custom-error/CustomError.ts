@@ -3,7 +3,7 @@ import { ErrorType, ErrorValidation, ErrorResponse } from './types';
 export class CustomError extends Error {
   private httpStatusCode: number;
   private errorType: ErrorType;
-  private errors: string[] | null;
+  private errors: string | null;
   private success?: boolean | false;
   private errorRaw: any;
   private errorsValidation: ErrorValidation[] | null;
@@ -13,7 +13,7 @@ export class CustomError extends Error {
     errorType: ErrorType,
     message: string,
     success: boolean | false = false,
-    errors: string[] | null = null,
+    errors: string | null = null,
     errorRaw: any = null,
     errorsValidation: ErrorValidation[] | null = null,
   ) {

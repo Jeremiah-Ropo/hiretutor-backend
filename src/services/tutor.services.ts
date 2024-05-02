@@ -38,11 +38,17 @@ class TutorService {
             if (!(user)) {
                 return next(new CustomError(403, "General", "Forbidden"))
             }
+            let payloadJwt = {
+                id: user.id,
+                email: user.email,
+                type: user.type
+            }
 
-            user.token = `${user.token}+logout`;
+            let token = createUserJwtToken(payloadJwt, "1s")
+            user.token = token;
             await user.save();
 
-            return {};
+            return { message: "Logout Successfully", token: token };
         } catch (error) {
             return next(new CustomError(400, "Raw", "Can't Login out", null, error))
         }

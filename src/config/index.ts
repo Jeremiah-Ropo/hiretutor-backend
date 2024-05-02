@@ -3,6 +3,7 @@ export const APP_VERSION = "1.0.0";
 export const PORT = process.env.PORT || 5000;
 export const PRICE = process.env.PRICE;
 export const STUDENT_JWT_SECRET = process.env.STUDENT_JWT_SECRET || "000-12345-000";
+export const JWT_EXPIRATION = process.env.JWT_EXPIRATION || "172800";
 export const TUTOR_JWT_SECRET=process.env.TUTOR_JWT_SECRET || "000-12348-000";
 export const DATABASE_URI=process.env.DATABASE_URI || "mongodb://localhost:27017/hire-tutor";
 export const BCRYPT_SALT=Number(process.env.BCRYPT_SALT) || 10;

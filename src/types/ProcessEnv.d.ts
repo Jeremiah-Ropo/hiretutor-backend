@@ -23,5 +23,6 @@ declare namespace NodeJS {
     QPAYSECRET: string;
     LIVE_KEY: string;
     PRICE: string;
+    JWT_EXPIRATION: string;
   }
 }

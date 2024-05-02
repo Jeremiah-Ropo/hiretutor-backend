@@ -7,13 +7,13 @@ import TutorController from '../controllers/tutor.controllers';
 const router = Router();
 const tutorController = Container.get(TutorController);
 
-router.post('/create-course',checkTutorJwt, tutorController.registerCourse)
+router.post('/course',checkTutorJwt, tutorController.registerCourse)
 
-router.get('/tutor/courses',checkTutorJwt, tutorController.coursesByTutor);
+router.get('/courses',checkTutorJwt, tutorController.coursesByTutor);
 
-router.get('/tutor', checkTutorJwt, tutorController.findOneTutor);
+router.get('/', checkTutorJwt, tutorController.findOneTutor);
 
-router.patch('/update', checkTutorJwt, tutorController.update)
+router.patch('/', checkTutorJwt, tutorController.update)
 
 // router.delete('/delete', tutorController.delete)
 

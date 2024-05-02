@@ -102,7 +102,7 @@ class UserService {
                 let token = createUserJwtToken(payloadJwt);
                 tutor.token = token;
                 await tutor.save();
-                return token; 
+                return { token, tutor_id: tutor.id }; 
             };
             let student = await this.studentModel.findOne({ email: payload.email});
             if (!student) {
@@ -120,7 +120,7 @@ class UserService {
             let token = createUserJwtToken(payloadJwt);
             student.token = token;
             await student.save();
-            return token;
+            return { token, student_id: student.id };
         } catch (error) {
             return next(new CustomError(400, "Raw", "Can't Login in", null, error))
         }
@@ -133,11 +133,17 @@ class UserService {
             if (!(user)) {
                 return next(new CustomError(403, "General", "Forbidden"))
             }
+            let payloadJwt = {
+                id: user.id,
+                email: user.email,
+                type: user.type
+            }
 
-            user.token = `${user.token}+logout`;
+            let token = createUserJwtToken(payloadJwt, "1s")
+            user.token = token;
             await user.save();
 
-            return { message: "Logout Successfully" };
+            return { message: "Logout Successfully", token: token };
         } catch (error) {
             return next(new CustomError(400, "Raw", "Can't Login out", null, error))
         }
