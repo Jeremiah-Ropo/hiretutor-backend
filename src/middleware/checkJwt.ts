@@ -36,7 +36,7 @@ export const checkTutorJwt = (req:Request, res:Response, next:NextFunction) => {
     req.jwtPayload = jwtPayload as JwtPayload;
     next();
   }catch(error){
-    return next(new CustomError(401, "Raw", 'JWT error', false, ["You don't have authorization to access this resource"]))
+    return next(new CustomError(401, "Raw", 'JWT error', false, "You don't have authorization to access this resource"))
   }
 }
 
