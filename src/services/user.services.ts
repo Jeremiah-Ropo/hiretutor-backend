@@ -6,7 +6,7 @@ import { PRICE } from '../config';
 
 
 import { CustomError } from "../utils/response/custom-error/CustomError";
-import { createUserJwtToken, createAdminJwtToken } from "../utils/createJwtToken";
+import { createUserJwtToken, createAdminJwtToken, createTutorJwtToken } from "../utils/createJwtToken";
 
 @Service()
 class UserService {
@@ -99,7 +99,7 @@ class UserService {
                     type: tutor.type
                 }
     
-                let token = createUserJwtToken(payloadJwt);
+                let token = createTutorJwtToken(payloadJwt);
                 tutor.token = token;
                 await tutor.save();
                 return { token, tutor_id: tutor.id }; 
